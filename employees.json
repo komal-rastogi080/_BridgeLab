@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1771476468433,
+    "name": "Komal Rastogi",
+    "salary": 10000,
+    "department": "Marketing",
+    "gender": "Female",
+    "joiningDate": "2026-02-17"
+  },
+  {
+    "id": 1771563299852,
+    "name": "Deepika Agrawal",
+    "salary": 80000,
+    "department": "HR",
+    "gender": "Female",
+    "joiningDate": "2026-02-04"
+  },
+  {
+    "id": 1771563334058,
+    "name": "Parul Gupta",
+    "salary": 45000,
+    "department": "Sales",
+    "gender": "Female",
+    "joiningDate": "2026-02-27"
+  },
+  {
+    "id": 1771563533352,
+    "name": "Robin Gupta",
+    "salary": 120000,
+    "department": "Marketing",
+    "gender": "Male",
+    "joiningDate": "2026-02-16"
+  }
+]

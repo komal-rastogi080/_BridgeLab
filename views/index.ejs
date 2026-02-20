@@ -1,9 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Employees List</title>
+    <link rel="stylesheet" href="/style.css">
+    <title>Dashboard</title>
 </head>
 <body>
-    
+<div class="header">
+    <img src="/icons/payroll.svg" alt="Logo" class="logo">
+    <h1>Employee Payroll Dashboard</h1>
+</div>
+
+<div class="container">
+    <div class="box">
+        <img src="/icons/employee.svg" alt="Total Employees" class="icon">
+        <h2>Total Employees</h2>
+        <p><%= employees.length %></p>
+    </div>
+
+    <div class="box">
+        <img src="/icons/money.svg" alt="Total Payroll" class="icon">
+        <h2>Total Payroll</h2>
+        <p>$<%= employees.reduce((sum, emp) => sum + emp.salary, 0) %></p>
+    </div>
+
+    <div class="box">
+        <img src="/icons/receipt.svg" alt="Total Tax" class="icon">
+        <h2>Total Tax</h2>
+        <p>$<%= employees.reduce((sum, emp) => sum + (emp.salary * 0.12), 0) %></p>
+    </div>
+
+    <div class="box">
+        <img src="/icons/net.svg" alt="Total Net Salary" class="icon">
+        <h2>Total Net Salary</h2>
+        <p>
+            $<%= 
+                employees.reduce((sum, emp) => sum + emp.salary, 0) - 
+                employees.reduce((tax, emp) => tax + (emp.salary * 0.12), 0)
+            %>
+        </p>
+    </div>
+
+    <div class="box">
+        <img src="/icons/salary.svg" alt="Average Salary" class="icon">
+        <h2>Average Salary</h2>
+        <p>
+            $<%= (employees.reduce((sum, emp) => sum + emp.salary, 0) / employees.length).toFixed(2) %>
+        </p>
+    </div>
+</div>
+
+<div class="table-container">
+    <a href="/add" class="btn-primary">+ Add Employee</a>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Salary</th>
+            <th>Tax (12%)</th>
+            <th>Net Salary</th>
+            <th>Actions</th>
+        </tr>
+
+        <% employees.forEach(emp => { %>
+        <tr>
+            <td><%= emp.name %></td>
+            <td><%= emp.department %></td>
+            <td>$<%= emp.salary %></td>
+            <td>$<%= emp.salary*0.12 %></td>
+            <td>$<%= emp.salary-(emp.salary*0.12) %></td>
+
+            <td class="action-links">
+                <a href="/edit/<%= emp.id %>" >
+                    <img src="/icons/edit.svg" alt="Edit" class="action-icon" width="30" height="30">
+                </a>
+                <a href="/delete/<%= emp.id %>" onclick="return confirm('Delete employee?')">
+                    <img src="/icons/delete.svg" alt="Delete" class="action-icon" width="30" height="30">
+                </a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+</div>
+
 </body>
 </html>

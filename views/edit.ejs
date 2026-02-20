@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edit Employee</title>
+</head>
+<body>
+
+<h1>Edit Employee</h1>
+
+<div class="card">
+
+    <form action="/edit/<%= employee.id %>" method="POST">
+
+        <label>Name:</label>
+        <input class="form-input" type="text" name="name" value="<%= employee.name %>" required>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="Male" <%= employee.gender === "Male" ? "selected" : "" %>>Male</option>
+            <option value="Female" <%= employee.gender === "Female" ? "selected" : "" %>>Female</option>
+        </select>
+
+        <label>Department:</label>
+        <select name="department" required>
+            <option value="HR" <%= employee.department === "HR" ? "selected" : "" %>>HR</option>
+            <option value="Engineering" <%= employee.department === "Engineering" ? "selected" : "" %>>Engineering</option>
+            <option value="Sales" <%= employee.department === "Sales" ? "selected" : "" %>>Sales</option>
+            <option value="Marketing" <%= employee.department === "Marketing" ? "selected" : "" %>>Marketing</option>
+        </select>
+
+        <label>Salary:</label>
+        <input class="form-input" type="number" name="salary" value="<%= employee.salary %>" required>
+
+        <label>Joining Date:</label>
+        <input class="form-input" type="date" name="joiningDate" value="<%= employee.joiningDate %>" required>
+
+        <button type="submit" class="btn-primary">Update Employee</button>
+        <a href="/" class="btn-back">Cancel</a>
+    </form>
+
+</div>
+
+</body>
+</html>

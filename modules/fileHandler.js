@@ -5,10 +5,12 @@ function getEmployees() {
     const filePath = path.join(__dirname, '..', 'employees.json');
     try {
         const data = fs.readFileSync(filePath, 'utf8');
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        // Ensure we always return an array for consumers that expect a list
+        return Array.isArray(parsed) ? parsed : Object.values(parsed);
     } catch (err) {
         console.error('Error reading employees.json:', err);
-        return {};
+        return [];
     }
 }
 
